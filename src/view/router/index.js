@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch } from 'react-router-dom';
 import style from './index.module.css';
@@ -11,48 +11,50 @@ const mapState = state => ({
   
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = dispatch => ({
   
 });
 
-
-
-const RouterPage = props => {
-  return (
-    <div className={style.container}>
-      <Switch>
-        <Route path='/index' component={Index} />
-        <Route path='/home' component={Home} />
-        <Route path='/monitor' component={Monitor} />
-      </Switch>
-      <div className={style.navbar}>
-        <div className={style['navbar-item']}>
-          <div className={style['navbar-item__icon']}>
-            <i className="iconfont icon-home" />
-          </div>
-          <div>
-            <Link to="/index" className={style['navbar-item__content']}>首页</Link>
-          </div>
-        </div>
-        <div className={style['navbar-item']}>
-          <div className={style['navbar-item__icon']}>
-            <i className="iconfont icon-call" />
-          </div>
-          <div>
-            <Link to="/monitor" className={style['navbar-item__content']}>监控</Link>
-          </div>
-        </div>
-        <div className={style['navbar-item']}>
-          <div className={style['navbar-item__icon']}>
-            <i className="iconfont icon-nickname" />
-          </div>
-          <div>
-            <Link to="/home" className={style['navbar-item__content']}>监控</Link>
-          </div>
+class RouterPage extends Component {
+  render() {
+    return (
+      <div className={style.container}>
+        <Switch>
+          <Route path='/index' component={Index} />
+          <Route path='/home' component={Home} />
+          <Route path='/monitor' component={Monitor} />
+        </Switch>
+        <div className={style.navbar}>
+          <Link to="/index" className={`${style['navbar-item']} ${this.hasChosen('/index') ? style['navbar-item__chosen'] : ''}`}>
+            <div className={style['navbar-item__icon']}>
+              <i className="iconfont icon-home" />
+            </div>
+            <div>
+              首页
+            </div>
+          </Link>
+          <Link to="/monitor" className={`${style['navbar-item']} ${this.hasChosen('/monitor') ? style['navbar-item__chosen'] : ''}`}>
+            <div className={style['navbar-item__icon']}>
+              <i className="iconfont icon-call" />
+            </div>
+            <div>
+              监控
+            </div>
+          </Link>
+          <Link to="/home" className={`${style['navbar-item']} ${this.hasChosen('/home') ? style['navbar-item__chosen'] : ''}`}>
+            <div className={style['navbar-item__icon']}>
+              <i className="iconfont icon-nickname" />
+            </div>
+            <div>
+              我
+            </div>
+          </Link>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  hasChosen = pathname => this.props.location.pathname === pathname
 }
 
 

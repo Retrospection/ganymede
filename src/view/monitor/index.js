@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Monitor = props => (
-  <div>
-    monitor
-  </div>
-);
+
+class Monitor extends Component {
+  render() {
+    return (
+      <div>
+        Monitor
+      </div>
+    );
+  }
+}
 
 export default Monitor

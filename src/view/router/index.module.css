@@ -1,10 +1,11 @@
 .container {
   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
 }
 
 .navbar {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   display: flex;
 }
@@ -17,9 +18,12 @@
   align-items: center;
 }
 
-.navbar-item__icon {}
-
 .navbar-item__content {
   font-size: 0.75rem;
   color: #666666;
+}
+
+.navbar-item__chosen {
+  color: blue;
+  font-weight: 800;
 }
